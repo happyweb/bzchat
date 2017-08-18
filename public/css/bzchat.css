@@ -212,7 +212,7 @@ body{
   display: none;
 }
 #main .view>div.view-game{
-  background: yellow;
+  /*background: yellow;*/
 }
 #main .view-contact .contact-item{
   width:280px;

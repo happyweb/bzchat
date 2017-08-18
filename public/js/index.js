@@ -1,4 +1,5 @@
 //bug1:559行ajax请求数据，点接搜索内容抓不到聊天记录
+//待开发：游戏区域，多人聊天
 +function(){
     window.onload=function(){
         var bzchat=new BzChat();
@@ -75,7 +76,7 @@
                     _this.userDetail(that,_this,isFriend);
                     _this.chatHistoryLoad(uid,_this);
                 }else{
-                    _this.btn.send.off("click");
+                    //_this.btn.send.off("click");
                     _this.elem.demoInner.empty();
                     _this.elem.chatName.html(nick);
                     _this.enterOnKeyDown(uid,_this,rname);
@@ -102,6 +103,7 @@
                 _this.elem.demoInner.empty();
                 _this.bufferDataFetch(uid);
                 _this.elem.chatName.html(nick);
+                _this.sendMsg("info-left",uid,_this,rname);
                 //绑定enter键
                 _this.enterOnKeyDown(uid,_this,rname);
                 _this.sendEmoji(uid,_this,rname);
@@ -134,6 +136,7 @@
                 _this.msgAudio(_this.isPlay);
                 _this.sendEmoji(data.uid,_this,data.rname);
                 isLeft="info-left";
+                _this.sendMsg(isLeft,data.uid,_this,data.rname);
                 _this.fileUpload(isLeft,data.uid,_this,data.rname);
             });
             //更新签名
@@ -317,7 +320,6 @@
         userLcon:function(_this){
             this.elem.panel.on("click",".avatar",function(e){
                 e.stopPropagation();
-                console.log(11);
                 if(_this.elem.userInfoPOP.hasClass("sca")){
                     _this.elem.userInfoPOP.removeClass("sca");
                     _this.elem.userInfoPOP.hide();
